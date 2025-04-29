@@ -1,4 +1,4 @@
-#¹®Á¦ 1¹ø
+#ë¬¸ì œ 1ë²ˆ
 
 electronic_data <- data.frame(Seller=c(5,8,7,3,6,10,4,2),Increase=c(55,80,67,30,48,92,20,10))
 electronic_data
@@ -35,7 +35,7 @@ s2
 
 sqrt(s2)
 
-#¹®Á¦2¹ø
+#ë¬¸ì œ2ë²ˆ
 #a
 SST <- sum((Y-mean(Y))^2)
 SSR <- sum((Y_hat-mean(Y))^2)
@@ -55,7 +55,7 @@ anova(model)
 r2 <- SSR/SST
 r2
 
-#¹®Á¦3
+#ë¬¸ì œ3
 #a
 s <- sqrt(SSE/(length(Y)-2))
 s;
@@ -82,7 +82,7 @@ beta1_hat+qt(p=0.05,df=length(Y)-2,lower.tail = F)*SE1
 summary(model)
 
 
-#¹®Á¦4
+#ë¬¸ì œ4
 #a
 Est_value <- beta0_hat+beta1_hat*9;Est_value
 SE_mean <- s*sqrt((1/(length(Y))+(9-mean(X))^2/sum((X-mean(X))^2)))
@@ -97,9 +97,9 @@ Est_value+qt(p=0.05,df=length(Y)-2,lower.tail = F)*SE_pre
 predict(model,newdata=data.frame(Seller=9),interval="prediction")
 
 
-#¹®Á¦5
+#ë¬¸ì œ5
 #a
-#1. Ç¥ÁØÈ­ ÀÜÂ÷ vs ¿¹Ãø°ªÀÇ »êÁ¡µµ
+#1. í‘œì¤€í™” ìž”ì°¨ vs ì˜ˆì¸¡ê°’ì˜ ì‚°ì ë„
 hii <- (1/length(Y))+(X-mean(X))^2/sum((X-mean(X))^2);hii
 
 res <- (Y-Y_hat);res
@@ -110,12 +110,12 @@ plot(x=Y_hat,y=std_resi,ylim=c(-3,3),cex=2,pch=19,ylab="standardized residual",x
 abline(h=-2,col="red",lty=2,lwd=2)
 abline(h=2,col="red",lty=2,lwd=2)
 
-#2. Ç¥ÁØÈ­ ÀÜÂ÷ VS ¼³¸íº¯¼öÀÇ »êÁ¡µµ
+#2. í‘œì¤€í™” ìž”ì°¨ VS ì„¤ëª…ë³€ìˆ˜ì˜ ì‚°ì ë„
 plot(x=X,y=std_resi,ylim=c(-3,3),cex=2,pch=19,ylab="standardized residual",xlab="Seller(X)",main="std residual VS X")
 abline(h=-2,col="red",lty=2,lwd=2)
 abline(h=2,col="red",lty=2,lwd=2)
 
-#3. Ç¥ÁØÈ­ ÀÜÂ÷ VS °üÃø¼ø¼­
+#3. í‘œì¤€í™” ìž”ì°¨ VS ê´€ì¸¡ìˆœì„œ
 plot(x=c(1:8),y=std_resi,ylim=c(-3,3),cex=2,pch=19,ylab="standardized residual",xlab="observation i",main="std residual VS i")
 abline(h=-2,col="red",lty=2,lwd=2)
 abline(h=2,col="red",lty=2,lwd=2)
