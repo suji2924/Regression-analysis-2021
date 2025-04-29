@@ -1,7 +1,7 @@
 setwd("C:/Users/suji/Desktop")
 Final_data <- read.csv('Hn19_all.csv',header=T)
 
-#µ¥ÀÌÅÍ 6284°³ 
+#ë°ì´í„° 6284ê°œ 
 
 Y <- Final_data[,8]
 X1 <- Final_data[,1]
@@ -12,7 +12,7 @@ X5 <- Final_data[,5]
 X6 <- Final_data[,6]
 X7 <- Final_data[,7]
 
-#»ó°ü°è¼ö
+#ìƒê´€ê³„ìˆ˜
 
 cor(Y,X1)
 cor(Y,X2)
@@ -23,7 +23,7 @@ cor(Y,X6)
 cor(Y,X7)
 cor(Final_data[,1:7])
 
-#»êÁ¡µµ 
+#ì‚°ì ë„ 
 par(mfrow=c(1,1))
 plot(x=X1,y=Y,cex=2,pch=19,ylab="BMI",xlab="sex")
 plot(x=X2,y=Y,cex=2,pch=19,ylab="BMI",xlab="age")
@@ -48,30 +48,30 @@ result_regfit <- summary(regfit_fin)
 result_regfit$adjr2
 plot(result_regfit$adjr2,ylim = c(0,1),pch=19,cex=2,ylab = "adj_R2",xlab = "model",type = "b")
 
-#°á°ú -> 29¹øÂ° x1,x2,x5,x6,x7¸¸ ÀÖ´Â ¸ğÇü adj_R2°ª Á¦ÀÏ ³ôÀ½ 8.384174e-01
+#ê²°ê³¼ -> 29ë²ˆì§¸ x1,x2,x5,x6,x7ë§Œ ìˆëŠ” ëª¨í˜• adj_R2ê°’ ì œì¼ ë†’ìŒ 8.384174e-01
 
 final_model_R2 <- lm(Y~factor(X1)+X2+X5+X6+X7)
 summary(final_model_R2)
-# summary°á°ú x6°ª 0.0562 ¾ÈµÊ / x5 = 0.0145
+# summaryê²°ê³¼ x6ê°’ 0.0562 ì•ˆë¨ / x5 = 0.0145
 null_model_R2 <- lm(Y~1)
 anova(final_model_R2,null_model_R2)
 
-#null ¸ğÇü°ú ºñ±³ °á°ú -> ±Í¹«°¡¼³ ±â°¢Àº °¡´É 
+#null ëª¨í˜•ê³¼ ë¹„êµ ê²°ê³¼ -> ê·€ë¬´ê°€ì„¤ ê¸°ê°ì€ ê°€ëŠ¥ 
 
 #cp
 result_regfit <- summary(regfit_fin)
 result_regfit$cp
-#°á°ú = 29¹øÂ° (4.299611 / x12567)
+#ê²°ê³¼ = 29ë²ˆì§¸ (4.299611 / x12567)
 plot(result_regfit$cp,pch=19,cex=2,ylab="Mallows-Cp",xlab="model",type="b")
 
 final_model_Cp <- lm(Y~factor(X1)+X2+X5+X6+X7)
 summary(final_model_Cp)
-#°á°ú ¿ª½Ã x6´Â p°ª 0.0562·Î ±â°¢ ¸øÇÔ / x5´Â 0.0145 
+#ê²°ê³¼ ì—­ì‹œ x6ëŠ” pê°’ 0.0562ë¡œ ê¸°ê° ëª»í•¨ / x5ëŠ” 0.0145 
 
 null_model_Cp <- lm(Y~1)
 anova(final_model_Cp,null_model_Cp)
 
-#°á°ú -> ±Í¹«°¡¼³ ±â°¢
+#ê²°ê³¼ -> ê·€ë¬´ê°€ì„¤ ê¸°ê°
 
 #BIC
 Final_reg <- Final_data[,c("HE_BMI","sex","age","edu","ainc","BP16_1","BE8_1","HE_wc")]
@@ -82,16 +82,16 @@ result_regfit <- summary(regfit_fin)
 result_regfit$bic
 plot(result_regfit$bic,pch=19,cex=2,ylab="BIC",xlab="model",type="b")
 
-#-11415.386796 15¹øÂ° - > x 127
+#-11415.386796 15ë²ˆì§¸ - > x 127
 final_model_bic <- lm(Y~factor(X1)+X2+X7)
 summary(final_model_bic)
 
 null_model_bic <- lm(Y~1)
 anova(final_model_bic,null_model_bic)
 
-# 127 Àº È®½Ç x5, x6 °ËÁ¤ ÇÊ¿ä 
+# 127 ì€ í™•ì‹¤ x5, x6 ê²€ì • í•„ìš” 
 
-#press´Â º¯¼ö °³¼ö ³Ê¹« ¸¹Àº °ü°è·Î 12567¸¸ »ìÆìº¸±â·Î ÇÔ 
+#pressëŠ” ë³€ìˆ˜ ê°œìˆ˜ ë„ˆë¬´ ë§ì€ ê´€ê³„ë¡œ 12567ë§Œ ì‚´í´ë³´ê¸°ë¡œ í•¨ 
 library(qpcR)
 
 #model1 <- lm(Y~1)
@@ -164,59 +164,59 @@ Y_PRESS <- c(PRESS2$stat,PRESS3$stat,PRESS4$stat,PRESS5$stat,PRESS6$stat,PRESS7$
 Y_PRESS
 plot(Y_PRESS,pch=19,cex=2,ylab="PRESS",xlab="model",type="b")
 
-#PRESS °á°ú : model31 : X12567 ±×´ë·Î ¾²´Â °ÍÀÌ Á¦ÀÏ ³·À½ 
+#PRESS ê²°ê³¼ : model31 : X12567 ê·¸ëŒ€ë¡œ ì“°ëŠ” ê²ƒì´ ì œì¼ ë‚®ìŒ 
 final_model_PRESS <- lm(Y~factor(X1)+X2+X5+X6+X7)
 summary(final_model_PRESS)
-#x6ÀÌ 0.0562·Î p°ª ³ÑÀ½ 
+#x6ì´ 0.0562ë¡œ pê°’ ë„˜ìŒ 
 
 null_model_PRESS <- lm(Y~1)
 anova(final_model_PRESS,null_model_PRESS)
-#±Ùµ¥ ¾Æ³ë¹Ù °á°ú´Â ¶Ç p°ª ±¦ÂúÀ½
+#ê·¼ë° ì•„ë…¸ë°” ê²°ê³¼ëŠ” ë˜ pê°’ ê´œì°®ìŒ
 
 
-#ºÎºĞ F°ËÁ¤À¸·Î X6°ËÁ¤ÇÏÀÚ 
+#ë¶€ë¶„ Fê²€ì •ìœ¼ë¡œ X6ê²€ì •í•˜ì 
 full_model_F <- lm(Y~factor(X1)+X2+X5+X6+X7)
 summary(full_model_F)
 reduced_model_F <- lm(Y~factor(X1)+X2+X5+X7)
 summary(reduced_model_F)
 anova(reduced_model_F,full_model_F)
-#ºÎºĞ F °ËÁ¤ °á°ú ÃÖÁ¾ x6Á¦¿ÜÇÏ±â·Î °áÁ¤ 
+#ë¶€ë¶„ F ê²€ì • ê²°ê³¼ ìµœì¢… x6ì œì™¸í•˜ê¸°ë¡œ ê²°ì • 
 
 
-# model x1257 °ËÁ¤ÇØº¸ÀÚ 
+# model x1257 ê²€ì •í•´ë³´ì 
 null_model_test <- lm(Y~1)
 full_model_test <- lm(Y~factor(X1)+X2+X5+X7)
 step(null_model_test,scope = ~factor(X1)+X2+X5+X7,direction = "both",test="F")
 step(full_model_test,direction= "backward",test="F")
 
 summary(full_model_test)
-#full model ÁÁÀ½ -> X1,X2,X5,X7
+#full model ì¢‹ìŒ -> X1,X2,X5,X7
 
-#±³È£ÀÛ¿ë Àû¿ë 
+#êµí˜¸ì‘ìš© ì ìš© 
 test_model <- lm(Y~factor(X1)+X2+X5+X7+X2*factor(X1)+X5*factor(X1)+X7*factor(X1))
 summary(test_model)
 
-#°á°ú -> X2 X7°ú´Â À¯ÀÇ x5¿Í´Â ¤¤¤¤ -> ±³È£ÀÛ¿ëÇ× Ãß°¡ÇØ¾ßÇÔ 
+#ê²°ê³¼ -> X2 X7ê³¼ëŠ” ìœ ì˜ x5ì™€ëŠ” ã„´ã„´ -> êµí˜¸ì‘ìš©í•­ ì¶”ê°€í•´ì•¼í•¨ 
 full_model_g <- lm(Y~factor(X1)+X2+X5+X7+X2*factor(X1)+X7*factor(X1))
 summary(full_model_g)
 
-#¿ÀÂ÷Ç×ÀÇ µîºĞ»ê¼º, Á¤±Ô¼º °ËÁ¤, ºĞ»ê¾ÈÁ¤È­ º¯È¯ (·Î±×, ·çÆ®),  ´ÙÁß°ø¼±¼º, ÀÜÂ÷ºĞ¼®, ¿¹ÃøÁ¤È®µµ
+#ì˜¤ì°¨í•­ì˜ ë“±ë¶„ì‚°ì„±, ì •ê·œì„± ê²€ì •, ë¶„ì‚°ì•ˆì •í™” ë³€í™˜ (ë¡œê·¸, ë£¨íŠ¸),  ë‹¤ì¤‘ê³µì„ ì„±, ì”ì°¨ë¶„ì„, ì˜ˆì¸¡ì •í™•ë„
 
 
 
-#¿ÀÂ÷Ç×ÀÇ µîºĞ»ê¼º
+#ì˜¤ì°¨í•­ì˜ ë“±ë¶„ì‚°ì„±
 par(mfrow=c(2,2))
 plot(full_model_g)
 summary(full_model_g)
 
-#Á¤±Ô¼º °ËÁ¤ box-cox :  57¹øÂ°, 0.26262626
+#ì •ê·œì„± ê²€ì • box-cox :  57ë²ˆì§¸, 0.26262626
 library(MASS)
 par(mfrow=c(1,1))
 boxcox_result <- boxcox(full_model_g)
 boxcox_result
 
-#º¯È¯ 
-#¿ø·¡²¨ 
+#ë³€í™˜ 
+#ì›ë˜êº¼ 
 par(mfrow=c(1,1))
 std_model_g <- rstandard(full_model_g)
 qqnorm(std_model_g,cex=2,pch=19,ylab="standardized residual original")
@@ -251,7 +251,7 @@ par(mfrow=c(2,2))
 plot(model_sqrt)
 
 
-#´ÙÁß°ø¼±¼º ; ´ÙÁß°ø¼±¼º °á°ú ³·¾Æ¼­ µû·Î Á¶Ä¡ ÇÊ¿ä x 
+#ë‹¤ì¤‘ê³µì„ ì„± ; ë‹¤ì¤‘ê³µì„ ì„± ê²°ê³¼ ë‚®ì•„ì„œ ë”°ë¡œ ì¡°ì¹˜ í•„ìš” x 
 
 
 X <- cbind(factor(X1),X2,X5,X7)
@@ -262,7 +262,7 @@ diag(solve(R))
 
 
 
-#¿¹Ãø  #ÃÑ 6284°³ / 4399°³ ÈÆ·ÃÀÚ·á / 1885°³ È®ÀÎÀÚ·á 
+#ì˜ˆì¸¡  #ì´ 6284ê°œ / 4399ê°œ í›ˆë ¨ìë£Œ / 1885ê°œ í™•ì¸ìë£Œ 
 set.seed(1234)
 rn <- sample(x=c(1:6284),size=6284,replace=F)
 Final_data$rn <- rn
@@ -295,5 +295,5 @@ SSR
 
 1-(PRESS_Final$stat/SST)
 
-#°á·Ğ
+#ê²°ë¡ 
 summary(Final_model)
