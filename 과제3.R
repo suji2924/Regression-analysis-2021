@@ -1,7 +1,7 @@
 setwd("C:/Users/suji/Desktop")
 Boston_dat <- read.csv('Boston.csv',header=T)
 
-#¹®Á¦ 1
+#Â¹Â®ÃÂ¦ 1
 #a
 Y <- Boston_dat[,13]
 X1 <- Boston_dat[,1]
@@ -46,7 +46,7 @@ F0_F
 
 pf(F0_F,df1=11,df2=493,lower.tail = F)
 
-#Reduced model (X3,X6Á¦¿Ü)
+#Reduced model (X3,X6ÃÂ¦Â¿Ãœ)
 Reduced_model <- lm(Y~X1+X2+X4+X5+X7+X8+X9+X10+X11+X12)
 summary(Reduced_model)
 
@@ -97,11 +97,11 @@ summary(Reduced_model)
 
 #3
 #a
-#YÃà
+#YÃƒÃ 
 model212 <- lm(Y~X2+X4+X5+X7+X8+X9+X10+X11+X12)
 model212
 
-#XÃà
+#XÃƒÃ 
 modelX212 <- lm(X1~X2+X4+X5+X7+X8+X9+X10+X11+X12)
 modelX212
 
