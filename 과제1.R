@@ -1,4 +1,4 @@
-#¹®Á¦ 5¹ø#
+#ë¬¸ì œ 5ë²ˆ#
 
 #a#
 85-qnorm(p=0.05,mean=0,sd=1,lower.tail=F)*(sqrt(40)/sqrt(200))
@@ -16,13 +16,13 @@ pnorm(z0,mean=0,sd=1,lower.tail=T)*2
 
 
 
-#¹®Á¦ 6¹ø#
+#ë¬¸ì œ 6ë²ˆ#
 
 Ex_Data <- data.frame(X=c(75,43,50,92,81),Y=c(80,38,70,91,87)) 
 Ex_Data
 
 #a#
-plot(x=Ex_Data$X,y=Ex_Data$Y,pch=19,cex=2,xlab="Áß°£°í»ç¼ºÀû",ylab="±â¸»°í»ç¼ºÀû")
+plot(x=Ex_Data$X,y=Ex_Data$Y,pch=19,cex=2,xlab="ì¤‘ê°„ê³ ì‚¬ì„±ì ",ylab="ê¸°ë§ê³ ì‚¬ì„±ì ")
 
 #b#
 Cov <- mean((Ex_Data$X-mean(Ex_Data$X))*(Ex_Data$Y-mean(Ex_Data$Y)))
